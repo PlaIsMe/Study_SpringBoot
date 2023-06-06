@@ -26,23 +26,21 @@ public class AccountController {
     private final AccountService accountService;    
 
     @GetMapping
-	public ResponseEntity<List<Account>> getAllAccounts() {
-        @Valid List<Account> accountList = accountService.getAllAccounts();
-        return ResponseEntity.ok().body(accountList);
+	public List<Account> getAllAccounts() {
+        return accountService.getAllAccounts();
 	}
 
     @GetMapping(path = "{accountId}")
-    public ResponseEntity<Account> getAccountById(@PathVariable Long accountId) throws Exception{
-        Account account = accountService.getAccountById(accountId);
-        return ResponseEntity.ok(account);
+    public Account getAccountById(@PathVariable Long accountId) throws Exception{
+        return accountService.getAccountById(accountId);
     }
 
     @PostMapping
-    public ResponseEntity<Object> createAccount(@Valid @RequestBody Account account, BindingResult result) throws Exception {
+    public Account createAccount(@Valid @RequestBody Account account, BindingResult result) throws Exception {
         if (result.hasErrors()){
             throw new Exception(result.getAllErrors().get(0).getDefaultMessage());
         }
-        return ResponseEntity.ok().body(accountService.createAccount(account));
+        return accountService.createAccount(account);
     }
 
     @DeleteMapping(path = "{accountId}")
@@ -51,10 +49,10 @@ public class AccountController {
     }
 
     @PutMapping(path = "{accountId}")
-    public ResponseEntity<Account> updateAccount(@PathVariable("accountId") Long accountId, @Valid @RequestBody Account account, BindingResult result) throws Exception {
+    public Account updateAccount(@PathVariable("accountId") Long accountId, @Valid @RequestBody Account account, BindingResult result) throws Exception {
         if (result.hasErrors()) {
             throw new Exception(result.getAllErrors().get(0).getDefaultMessage());
         }
-        return ResponseEntity.ok().body(accountService.updateAccount(accountId, account));        
+        return accountService.updateAccount(accountId, account);        
     }
 }

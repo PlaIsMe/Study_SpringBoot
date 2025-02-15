@@ -17,6 +17,8 @@ import com.study.springboot.dto.request.UserUpdateRequest;
 import com.study.springboot.entity.User;
 import com.study.springboot.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -24,7 +26,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    User createUser(@RequestBody UserCreationRequest request){
+    User createUser(@RequestBody @Valid UserCreationRequest request){
         return userService.createRequest(request);
     }
 
@@ -39,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    User updateUser(@PathVariable String userId, @RequestBody UserUpdateRequest request){
+    User updateUser(@PathVariable String userId, @RequestBody @Valid UserUpdateRequest request){
         return userService.updateUser(userId, request);
     }
 

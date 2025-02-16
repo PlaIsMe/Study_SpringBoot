@@ -16,7 +16,6 @@ import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.UserCreationRequest;
 import com.study.springboot.dto.request.UserUpdateRequest;
 import com.study.springboot.entity.User;
-import com.study.springboot.response.UserResponse;
 import com.study.springboot.service.UserService;
 
 import jakarta.validation.Valid;
@@ -28,8 +27,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request){
-        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
+    ApiResponse<User> createUser(@RequestBody @Valid UserCreationRequest request){
+        ApiResponse<User> apiResponse = new ApiResponse<>();
         apiResponse.setResult(userService.createRequest(request));
         return apiResponse;
     }
@@ -40,24 +39,18 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    ApiResponse<UserResponse> getUser(@PathVariable("userId") String userId){
-        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
-        apiResponse.setResult(userService.getUser(userId));
-        return apiResponse;
+    User getUser(@PathVariable("userId") String userId){
+        return userService.getUser(userId);
     }
 
     @PutMapping("/{userId}")
-    ApiResponse<UserResponse> updateUser(@PathVariable String userId, @RequestBody @Valid UserUpdateRequest request){
-        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
-        apiResponse.setResult(userService.updateUser(userId, request));
-        return apiResponse;
+    User updateUser(@PathVariable String userId, @RequestBody @Valid UserUpdateRequest request){
+        return userService.updateUser(userId, request);
     }
 
     @DeleteMapping("/{userId}")
-    ApiResponse<String> deleteUser(@PathVariable String userId){
+    String deleteUser(@PathVariable String userId){
         userService.deleteUser(userId);
-        ApiResponse<String> apiResponse = new ApiResponse<>();
-        apiResponse.setResult("User has been deleted");
-        return apiResponse;
+        return "User has been deleted";
     }
 }

@@ -3,23 +3,16 @@ package com.study.springboot.dto.request;
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.Size;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Getter
+@Setter
 public class UserUpdateRequest {
     @Size(min = 8, message = "Password must be at least 8 characters")
-    String password;
+    private String password;
     
-    String firstName;
-    String lastName;
-    LocalDate dob;
+    private String firstName;
+    private String lastName;
+    private LocalDate dob;
 }

@@ -3,26 +3,19 @@ package com.study.springboot.dto.request;
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.Size;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Getter
+@Setter
 public class UserCreationRequest {
     @Size(min = 3,message = "USERNAME_INVALID")
-    String username;
+    private String username;
 
     @Size(min = 8, message = "INVALID_PASSWORD")
-    String password;
+    private String password;
     
-    String firstName;
-    String lastName;
-    LocalDate dob;
+    private String firstName;
+    private String lastName;
+    private LocalDate dob;
 }

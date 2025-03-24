@@ -1,9 +1,11 @@
 package com.study.springboot.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.UserCreationRequest;
 import com.study.springboot.dto.request.UserUpdateRequest;
 import com.study.springboot.entity.User;
@@ -43,8 +45,10 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public List<User> getUsers(){
-        return userRepository.findAll();
+    public List<UserResponse> getUsers(){
+        return userRepository.findAll().stream()
+        .map(user -> userMapper.toUserResponse(user))
+        .collect(Collectors.toList());
     }
 
     public UserResponse getUser(String id){

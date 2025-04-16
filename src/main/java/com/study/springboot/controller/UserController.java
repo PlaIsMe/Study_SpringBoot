@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.UserCreationRequest;
 import com.study.springboot.dto.request.UserUpdateRequest;
-import com.study.springboot.entity.User;
 import com.study.springboot.response.UserResponse;
 import com.study.springboot.service.UserService;
 

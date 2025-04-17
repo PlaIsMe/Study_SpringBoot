@@ -2,32 +2,7 @@
 
 ## Token Based Authentication Flow
 
-+-------------------+                                    +-------------------+
-|      CLIENT       |                                    |      SERVER       |
-+-------------------+                                    +-------------------+
-        |                                                       |
-        | 1. User logs in with {username, password}             |
-        | ----------------------------------------------------> |
-        |                                                       |
-        |                                     2. Creates JWT     |
-        |                                                       |
-        | 3. Sends encrypted {JWT}                               |
-        | <---------------------------------------------------- |
-        |                                                       |
-        | 4. Saves JWT in localStorage                           |
-        |                                                       |
-        | 5. Sends Auth request with JWT in header               |
-        |   headers: {                                           |
-        |     Authorization: "Bearer ${JWT_TOKEN}"              |
-        |   }                                                   |
-        | ----------------------------------------------------> |
-        |                                                       |
-        |                                     6. Compares JWT    |
-        |                                                       |
-        | 7. Sends response on every subsequent request          |
-        | <---------------------------------------------------- |
-        |                                                       |
-+-------------------+                                    +-------------------+
+<pre> ```text ## Token Based Authentication Flow +------------------+ +------------------+ | CLIENT | | SERVER | +------------------+ +------------------+ | | 1. User logs in with {username, password} | ----------------------------> | | | | 2. Creates JWT | | 3. Sends encrypted {JWT} <--------------| | | 4. Saves JWT in localStorage | | | 5. Sends Auth request with JWT in header headers: { Authorization: "Bearer ${JWT_TOKEN}" } | ----------------------------> | | 6. Compares JWT | | 7. Sends response on every subsequent request | <---------------------------- | ``` </pre>
 
 ## JSON Web Token (JWT) Structure
 +---------------------+

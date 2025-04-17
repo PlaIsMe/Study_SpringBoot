@@ -2,7 +2,34 @@
 
 ## Token Based Authentication Flow
 
-<pre> ```text ## Token Based Authentication Flow +------------------+ +------------------+ | CLIENT | | SERVER | +------------------+ +------------------+ | | 1. User logs in with {username, password} | ----------------------------> | | | | 2. Creates JWT | | 3. Sends encrypted {JWT} <--------------| | | 4. Saves JWT in localStorage | | | 5. Sends Auth request with JWT in header headers: { Authorization: "Bearer ${JWT_TOKEN}" } | ----------------------------> | | 6. Compares JWT | | 7. Sends response on every subsequent request | <---------------------------- | ``` </pre>
+```
++-------------------+                                    +-------------------+
+|      CLIENT       |                                    |      SERVER       |
++-------------------+                                    +-------------------+
+        |                                                       |
+        | 1. User logs in with {username, password}             |
+        | ----------------------------------------------------> |
+        |                                                       |
+        |                                     2. Creates JWT     |
+        |                                                       |
+        | 3. Sends encrypted {JWT}                               |
+        | <---------------------------------------------------- |
+        |                                                       |
+        | 4. Saves JWT in localStorage                           |
+        |                                                       |
+        | 5. Sends Auth request with JWT in header               |
+        |   headers: {                                           |
+        |     Authorization: "Bearer ${JWT_TOKEN}"              |
+        |   }                                                   |
+        | ----------------------------------------------------> |
+        |                                                       |
+        |                                     6. Compares JWT    |
+        |                                                       |
+        | 7. Sends response on every subsequent request          |
+        | <---------------------------------------------------- |
+        |                                                       |
++-------------------+                                    +-------------------+
+```
 
 ## JSON Web Token (JWT) Structure
 +---------------------+
@@ -87,8 +114,10 @@ To manually verify a JWT token, use:
 🔗 [JWT.io Debugger](https://jwt.io/)
 
 ### Verify JWT token
+```
 Create dto IntrospectRequest, IntrospectResponse
 Create method introspect
+```
 ```java
 public IntrospectResponse introspect(IntrospectRequest request) {
     var token = request.getToken();

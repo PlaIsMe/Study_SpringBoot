@@ -32,6 +32,7 @@
 ```
 
 ## JSON Web Token (JWT) Structure
+```
 +---------------------+
 |   JSON WEB TOKEN    |                       +--------------------------+
 +---------------------+                       |                          |
@@ -60,7 +61,7 @@
 |  +--------------+   |                       |     secret_salt                     |
 |                     |                       |   )                                 |
 +---------------------+                       +-------------------------------------+
-
+```
 - **Header**: Contains type and algorithm.
 - **Payload**: Contains claims (subject, issued at, etc).
   - ⚠ Avoid storing too much or sensitive data.

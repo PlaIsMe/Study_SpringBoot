@@ -129,20 +129,29 @@ The client (Actor) sends an HTTP request with a token (usually in the header lik
 - Spring Security returns a **`401 Unauthorized`** before your controller is touched.
 
 
-## Implementation
-In pom.xml add dependency
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-		</dependency>
+## 🛠️ Implementation
 
-All of api will return 401 unauthorized after adding the dependency due to the auto enable of spring security
+### 1. Add Dependency
 
-Reference document link: https://docs.spring.io/spring-security/reference/servlet/architecture.html
+In your `pom.xml`, add the following dependency:
 
-1. Config a security filter chain
-Create a new package name configuration
-Create SecurityConfig.java:
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+</dependency>
+```
+- After adding this dependency, all API requests will return 401 Unauthorized due to Spring Security being automatically enabled.
+🔗 **Reference:** [Spring Security Servlet Architecture](https://docs.spring.io/spring-security/reference/servlet/architecture.html)
+
+---
+
+### 2. Configure Security Filter Chain
+
+1. Create a new package named `configuration`.
+2. Inside it, create a file named `SecurityConfig.java`:
+
+```java
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -151,6 +160,9 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 }
+```
 
-Config which endpoint is protected, which endpoint user can access without being protected (register, login)
-By default, spring security will turn on csrf to protect the endpoint from attacker cross side, in dev mode, you should turn it off or else the api will always return 403
+### 3. Define Endpoint Access Rules
+- Configure which endpoints are **protected** and which are **public** (e.g., `/register`, `/login`).
+- By default, Spring Security enables **CSRF protection** to prevent cross-site request forgery attacks.
+- In **development mode**, you should disable CSRF protection to avoid `403 Forbidden` errors for `POST` or `PUT` requests.

@@ -1,5 +1,6 @@
 package com.study.springboot.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.study.springboot.dto.request.UserCreationRequest;
 import com.study.springboot.dto.request.UserUpdateRequest;
 import com.study.springboot.entity.User;
+import com.study.springboot.enums.Role;
 import com.study.springboot.exception.AppException;
 import com.study.springboot.exception.ErrorCode;
 import com.study.springboot.mapper.UserMapper;
@@ -34,6 +36,11 @@ public class UserService {
         User user = userMapper.toUser(request);
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        HashSet<String> roles = new HashSet<String>();
+        roles.add(Role.USER.name());
+        user.setRoles(roles);
+
         return userMapper.toUserResponse(userRepository.save(user));
     }
 

@@ -74,7 +74,7 @@
 
 
 ## Spring Security Filters Flow
-![Spring Security Filters Flow](<Spring Security Filters Flow.png>)
+![Spring Security Filters Flow](<images/Spring Security Filters Flow.png>)
 
 ## 🔐 Spring Security Filter Flow (Token-Based Authentication)
 

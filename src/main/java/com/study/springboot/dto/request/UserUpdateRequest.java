@@ -1,6 +1,7 @@
 package com.study.springboot.dto.request;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
@@ -22,4 +23,5 @@ public class UserUpdateRequest {
     String firstName;
     String lastName;
     LocalDate dob;
+    List<String> roles;
 }

@@ -58,10 +58,10 @@ public class AuthenticationService {
             return IntrospectResponse.builder().valid(verified && expiryTime.after(new Date())).build();
         } catch (JOSEException e) {
             e.printStackTrace();
-            throw new AppException(ErrorCode.INTERNAL_SERVER_FAILED);
+            throw new AppException(ErrorCode.JOSEEXCEPTION);
         } catch (ParseException e) {
             e.printStackTrace();
-            throw new AppException(ErrorCode.INTERNAL_SERVER_FAILED);
+            throw new AppException(ErrorCode.PARSEEXCEPTION);
         }
     }
 
@@ -102,7 +102,7 @@ public class AuthenticationService {
             return jwsObject.serialize();
         } catch (JOSEException e) {
             e.printStackTrace();
-            throw new AppException(ErrorCode.INTERNAL_SERVER_FAILED);
+            throw new AppException(ErrorCode.JOSEEXCEPTION);
         }
     }
 

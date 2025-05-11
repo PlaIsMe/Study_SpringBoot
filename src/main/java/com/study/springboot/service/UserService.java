@@ -33,7 +33,6 @@ public class UserService {
     RoleRepository roleRepository;
     PasswordEncoder passwordEncoder;
 
-    @PreAuthorize("hasAuthority('CREATE_DATA')")
     public UserResponse createUser(UserCreationRequest request) {
         if (userRepository.existsByUsername(request.getUsername()))
             throw new AppException(ErrorCode.USER_EXISTED);
@@ -62,6 +61,7 @@ public class UserService {
             .orElseThrow(() -> new RuntimeException("User not found"));
         userMapper.updateUser(user, request);
         var roles = roleRepository.findAllById(request.getRoles());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRoles(new HashSet<>(roles));
         return userMapper.toUserResponse(userRepository.save(user));
     }

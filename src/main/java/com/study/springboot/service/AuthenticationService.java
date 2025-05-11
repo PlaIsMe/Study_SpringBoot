@@ -65,7 +65,7 @@ public class AuthenticationService {
         }
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request){
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
@@ -75,23 +75,22 @@ public class AuthenticationService {
             throw new AppException(ErrorCode.UNAUTHENTICATED);
         var token = generateToken(user);
         return AuthenticationResponse.builder()
-        .token(token)
-        .authenticated(true)
-        .build();
+                .token(token)
+                .authenticated(true)
+                .build();
     }
 
     private String generateToken(User user) {
         JWSHeader header = new JWSHeader(JWSAlgorithm.HS512);
 
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
-        .subject(user.getUsername())
-        .issuer("mydomain.com")
-        .issueTime(new Date())
-        .expirationTime(new Date(
-            Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()
-        ))
-        .claim("scope", buildScope(user))
-        .build();
+                .subject(user.getUsername())
+                .issuer("mydomain.com")
+                .issueTime(new Date())
+                .expirationTime(new Date(
+                        Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
+                .claim("scope", buildScope(user))
+                .build();
 
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
 
@@ -106,14 +105,15 @@ public class AuthenticationService {
         }
     }
 
-    private String buildScope(User user){
+    private String buildScope(User user) {
         StringJoiner stringJoiner = new StringJoiner(" ");
 
         if (!CollectionUtils.isEmpty(user.getRoles()))
             user.getRoles().forEach(role -> {
                 stringJoiner.add("ROLE_" + role.getName());
                 if (!CollectionUtils.isEmpty(role.getPermissions()))
-                    role.getPermissions().forEach(permission -> stringJoiner.add(permission.getName()));
+                    role.getPermissions()
+                            .forEach(permission -> stringJoiner.add(permission.getName()));
             });
 
         return stringJoiner.toString();

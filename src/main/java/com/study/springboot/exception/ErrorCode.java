@@ -19,6 +19,7 @@ public enum ErrorCode {
     JOSEEXCEPTION(1007, "Jose exception", HttpStatus.INTERNAL_SERVER_ERROR),
     PARSEEXCEPTION(1008, "Parse exception", HttpStatus.INTERNAL_SERVER_ERROR),
     UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN),
+    INVALID_DOB(1008, "Invalid date of birth", HttpStatus.BAD_REQUEST),
     ;
     private int code;
     private String message;

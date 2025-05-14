@@ -6,10 +6,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.study.springboot.dto.request.PermissionRequest;
+import com.study.springboot.dto.response.PermissionResponse;
 import com.study.springboot.entity.Permission;
 import com.study.springboot.mapper.PermissionMapper;
 import com.study.springboot.repository.PermissionRepository;
-import com.study.springboot.response.PermissionResponse;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

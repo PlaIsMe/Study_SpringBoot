@@ -7,10 +7,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.study.springboot.dto.request.RoleRequest;
+import com.study.springboot.dto.response.RoleResponse;
 import com.study.springboot.mapper.RoleMapper;
 import com.study.springboot.repository.PermissionRepository;
 import com.study.springboot.repository.RoleRepository;
-import com.study.springboot.response.RoleResponse;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

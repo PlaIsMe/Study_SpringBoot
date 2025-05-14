@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.PermissionRequest;
-import com.study.springboot.response.PermissionResponse;
+import com.study.springboot.dto.response.PermissionResponse;
 import com.study.springboot.service.PermissionService;
 
 import lombok.AccessLevel;

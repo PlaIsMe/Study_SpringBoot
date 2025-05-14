@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.study.springboot.dto.request.UserCreationRequest;
 import com.study.springboot.dto.request.UserUpdateRequest;
+import com.study.springboot.dto.response.UserResponse;
 import com.study.springboot.entity.User;
 import com.study.springboot.exception.AppException;
 import com.study.springboot.exception.ErrorCode;
 import com.study.springboot.mapper.UserMapper;
 import com.study.springboot.repository.RoleRepository;
 import com.study.springboot.repository.UserRepository;
-import com.study.springboot.response.UserResponse;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

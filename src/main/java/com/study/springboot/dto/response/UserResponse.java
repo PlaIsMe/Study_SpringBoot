@@ -1,4 +1,4 @@
-package com.study.springboot.response;
+package com.study.springboot.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

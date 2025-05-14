@@ -6,8 +6,8 @@ import org.mapstruct.Mapping;
 
 import com.study.springboot.dto.request.UserCreationRequest;
 import com.study.springboot.dto.request.UserUpdateRequest;
+import com.study.springboot.dto.response.UserResponse;
 import com.study.springboot.entity.User;
-import com.study.springboot.response.UserResponse;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

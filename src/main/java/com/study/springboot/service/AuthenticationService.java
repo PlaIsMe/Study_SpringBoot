@@ -24,12 +24,12 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.study.springboot.dto.request.AuthenticationRequest;
 import com.study.springboot.dto.request.IntrospectRequest;
+import com.study.springboot.dto.response.AuthenticationResponse;
+import com.study.springboot.dto.response.IntrospectResponse;
 import com.study.springboot.entity.User;
 import com.study.springboot.exception.AppException;
 import com.study.springboot.exception.ErrorCode;
 import com.study.springboot.repository.UserRepository;
-import com.study.springboot.response.AuthenticationResponse;
-import com.study.springboot.response.IntrospectResponse;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

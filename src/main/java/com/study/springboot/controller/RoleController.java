@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.RoleRequest;
-import com.study.springboot.response.RoleResponse;
+import com.study.springboot.dto.response.RoleResponse;
 import com.study.springboot.service.RoleService;
 
 import lombok.AccessLevel;

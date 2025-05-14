@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.AuthenticationRequest;
 import com.study.springboot.dto.request.IntrospectRequest;
-import com.study.springboot.response.AuthenticationResponse;
-import com.study.springboot.response.IntrospectResponse;
+import com.study.springboot.dto.response.AuthenticationResponse;
+import com.study.springboot.dto.response.IntrospectResponse;
 import com.study.springboot.service.AuthenticationService;
 
 import lombok.AccessLevel;

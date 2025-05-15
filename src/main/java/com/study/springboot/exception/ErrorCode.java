@@ -16,8 +16,6 @@ public enum ErrorCode {
     INVALID_PASSWORD(1004, "Password must be at least {min} characters", HttpStatus.BAD_REQUEST),
     USER_NOT_EXISTED(1005, "User not existed", HttpStatus.NOT_FOUND),
     UNAUTHENTICATED(1006, "Unauthenticated", HttpStatus.UNAUTHORIZED),
-    JOSEEXCEPTION(1007, "Jose exception", HttpStatus.INTERNAL_SERVER_ERROR),
-    PARSEEXCEPTION(1008, "Parse exception", HttpStatus.INTERNAL_SERVER_ERROR),
     UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN),
     INVALID_DOB(1008, "Your age must be at least {min}", HttpStatus.BAD_REQUEST),
     ;

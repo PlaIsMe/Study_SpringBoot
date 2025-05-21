@@ -1,5 +1,5 @@
 # Refresh Token Flow
-![Refresh Token Flow](<RefreshTokenFlow.png>)
+![Refresh Token Flow](<images/Refresh Token Flow.png)
 
 This sequence diagram illustrates how a client (such as a mobile or web app) handles expired access tokens using a refresh token:
 

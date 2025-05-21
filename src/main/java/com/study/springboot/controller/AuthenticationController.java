@@ -12,6 +12,7 @@ import com.study.springboot.dto.request.ApiResponse;
 import com.study.springboot.dto.request.AuthenticationRequest;
 import com.study.springboot.dto.request.IntrospectRequest;
 import com.study.springboot.dto.request.LogoutRequest;
+import com.study.springboot.dto.request.RefreshRequest;
 import com.study.springboot.dto.response.AuthenticationResponse;
 import com.study.springboot.dto.response.IntrospectResponse;
 import com.study.springboot.service.AuthenticationService;
@@ -40,6 +41,15 @@ public class AuthenticationController {
         throws ParseException, JOSEException {
         var result = authenticationService.introspect(request);
         return ApiResponse.<IntrospectResponse>builder()
+                .result(result)
+                .build();
+    }
+
+    @PostMapping("/refresh")
+    ApiResponse<AuthenticationResponse> authenticate(@RequestBody RefreshRequest request)
+            throws ParseException, JOSEException {
+        var result = authenticationService.refreshToken(request);
+        return ApiResponse.<AuthenticationResponse>builder()
                 .result(result)
                 .build();
     }

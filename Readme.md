@@ -157,8 +157,14 @@ void createUser_userExisted_fail() {
 
 Make sure the test data (`request`, `user`) is consistent with expected results.
 
-## Isolation in Unit Test
-- Use h2 database, a csdl chạy trong memory instead of using real database in production
+
+## 🧪 Isolation in Unit Test
+
+To ensure your unit tests are isolated from production systems, use an **in-memory H2 database** instead of connecting to a real production database.
+
+---
+
+### 1. Add H2 Dependency
 
 ```xml
 <dependency>
@@ -169,21 +175,47 @@ Make sure the test data (`request`, `user`) is consistent with expected results.
 </dependency>
 ```
 
-- create resources/test.properties inside test package
-spring.datasource.url = jdbc:h2:mem:testdb;MODE=MYSQL
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username = sa
-spring.datasource.password = sa
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.jpa.hibernate.ddl-auto = none
+---
 
-- add @TestPropertySource("/test.properties") inside java test file
-- modify ApplicationInitConfig because it's using syntax in jpa, add conditional bean
+### 2. Create `test.properties` (inside `src/test/resources`)
+
+```properties
+spring.datasource.url=jdbc:h2:mem:testdb;MODE=MYSQL
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=sa
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=none
+```
+
+---
+
+### 3. Use the Test Properties File
+
+Add the following annotation in your test class:
+
+```java
+@TestPropertySource("/test.properties")
+```
+
+---
+
+### 4. Modify `ApplicationInitConfig` (for conditional bean loading)
+
+If your config class uses a MySQL-specific bean, you can guard it with a condition like this:
 
 ```java
 @Bean
-@ConditionalOnProperty(prefix = "spring",
-        value = "datasource.driverClassName",
-        havingValue = "com.mysql.cj.jdbc.Driver"
+@ConditionalOnProperty(
+    prefix = "spring",
+    value = "datasource.driverClassName",
+    havingValue = "com.mysql.cj.jdbc.Driver"
 )
+public YourBean yourBean() {
+    // Bean initialization here
+}
 ```
+
+This ensures the bean is only loaded when you're running with the MySQL driver, not during tests using H2.
+
+---

@@ -1,4 +1,3 @@
 package com.study.springboot;
 
-class SpringbootApplicationTests {
-}
+class SpringbootApplicationTests {}

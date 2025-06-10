@@ -2,10 +2,11 @@ package com.study.springboot.entity;
 
 import java.util.Set;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import org.hibernate.annotations.ManyToAny;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +25,7 @@ import lombok.experimental.FieldDefaults;
 public class Role {
     @Id
     String name;
-    
+
     String description;
 
     @ManyToAny

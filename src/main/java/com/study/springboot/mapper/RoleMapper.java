@@ -7,7 +7,6 @@ import com.study.springboot.dto.request.RoleRequest;
 import com.study.springboot.dto.response.RoleResponse;
 import com.study.springboot.entity.Role;
 
-
 @Mapper(componentModel = "spring")
 public interface RoleMapper {
     @Mapping(target = "permissions", ignore = true)

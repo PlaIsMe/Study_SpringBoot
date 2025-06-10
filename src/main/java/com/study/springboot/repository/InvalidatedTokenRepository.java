@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.study.springboot.entity.InvalidatedToken;
 
 @Repository
-public interface InvalidatedTokenRepository extends JpaRepository<InvalidatedToken, String> {
-}
+public interface InvalidatedTokenRepository extends JpaRepository<InvalidatedToken, String> {}

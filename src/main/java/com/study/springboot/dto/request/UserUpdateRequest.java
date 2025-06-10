@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.validation.constraints.Size;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,7 @@ import lombok.experimental.FieldDefaults;
 public class UserUpdateRequest {
     @Size(min = 8, message = "Password must be at least 8 characters")
     String password;
-    
+
     String firstName;
     String lastName;
     LocalDate dob;
